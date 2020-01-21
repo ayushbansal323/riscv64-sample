@@ -81,7 +81,7 @@ opensbi
 
 ### RUN
 
-> qemu-system-riscv64 -nographic -M virt -m 256M \
--bios $WORK/opensbi/build/platform/qemu/virt/firmware/fw_jump.elf \
--kernel $WORK/linux/arch/riscv/boot/Image \
+> qemu-system-riscv64 -nographic -M virt -m 256M \\ \
+-bios $WORK/opensbi/build/platform/qemu/virt/firmware/fw_jump.elf \\ \
+-kernel $WORK/linux/arch/riscv/boot/Image \\ \
 -initrd $WORK/freedom-u-sdk/work/initramfs.cpio.gz
