@@ -1,0 +1,3 @@
+/home/ayusha/work/opensbi/build/lib/sbi/sbi_string.o: /home/ayusha/work/opensbi/lib/sbi/sbi_string.c \
+ /home/ayusha/work/opensbi/include/sbi/sbi_string.h \
+ /home/ayusha/work/opensbi/include/sbi/sbi_types.h

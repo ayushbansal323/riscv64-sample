@@ -1,0 +1,6 @@
+/home/ayusha/work/opensbi/build/lib/sbi/sbi_fifo.o: /home/ayusha/work/opensbi/lib/sbi/sbi_fifo.c \
+ /home/ayusha/work/opensbi/include/sbi/riscv_locks.h \
+ /home/ayusha/work/opensbi/include/sbi/sbi_error.h \
+ /home/ayusha/work/opensbi/include/sbi/sbi_fifo.h \
+ /home/ayusha/work/opensbi/include/sbi/sbi_types.h \
+ /home/ayusha/work/opensbi/include/sbi/sbi_string.h

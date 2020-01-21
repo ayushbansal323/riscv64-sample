@@ -1,0 +1,5 @@
+/home/ayusha/work/opensbi/build/lib/utils/serial/uart8250.o: /home/ayusha/work/opensbi/lib/utils/serial/uart8250.c \
+ /home/ayusha/work/opensbi/include/sbi/riscv_io.h \
+ /home/ayusha/work/opensbi/include/sbi/riscv_barrier.h \
+ /home/ayusha/work/opensbi/include/sbi/sbi_types.h \
+ /home/ayusha/work/opensbi/include/sbi_utils/serial/uart8250.h

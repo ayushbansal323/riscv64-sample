@@ -1,0 +1,19 @@
+/home/ayusha/work/opensbi/build/lib/sbi/sbi_ipi.o: /home/ayusha/work/opensbi/lib/sbi/sbi_ipi.c \
+ /home/ayusha/work/opensbi/include/sbi/riscv_asm.h \
+ /home/ayusha/work/opensbi/include/sbi/riscv_encoding.h \
+ /home/ayusha/work/opensbi/include/sbi/sbi_const.h \
+ /home/ayusha/work/opensbi/include/sbi/riscv_atomic.h \
+ /home/ayusha/work/opensbi/include/sbi/riscv_barrier.h \
+ /home/ayusha/work/opensbi/include/sbi/sbi_bitops.h \
+ /home/ayusha/work/opensbi/include/sbi/sbi_bits.h \
+ /home/ayusha/work/opensbi/include/sbi/sbi_error.h \
+ /home/ayusha/work/opensbi/include/sbi/sbi_hart.h \
+ /home/ayusha/work/opensbi/include/sbi/sbi_types.h \
+ /home/ayusha/work/opensbi/include/sbi/sbi_init.h \
+ /home/ayusha/work/opensbi/include/sbi/sbi_ipi.h \
+ /home/ayusha/work/opensbi/include/sbi/sbi_platform.h \
+ /home/ayusha/work/opensbi/include/sbi/sbi_ecall.h \
+ /home/ayusha/work/opensbi/include/sbi/sbi_scratch.h \
+ /home/ayusha/work/opensbi/include/sbi/sbi_trap.h \
+ /home/ayusha/work/opensbi/include/sbi/sbi_version.h \
+ /home/ayusha/work/opensbi/include/sbi/sbi_tlb.h

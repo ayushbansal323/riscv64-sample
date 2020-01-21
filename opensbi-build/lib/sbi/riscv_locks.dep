@@ -1,0 +1,3 @@
+/home/ayusha/work/opensbi/build/lib/sbi/riscv_locks.o: /home/ayusha/work/opensbi/lib/sbi/riscv_locks.c \
+ /home/ayusha/work/opensbi/include/sbi/riscv_barrier.h \
+ /home/ayusha/work/opensbi/include/sbi/riscv_locks.h

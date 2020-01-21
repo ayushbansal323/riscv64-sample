@@ -1,0 +1,8 @@
+/home/ayusha/work/opensbi/build/lib/utils/libfdt/fdt.o: /home/ayusha/work/opensbi/lib/utils/libfdt/fdt.c \
+ /home/ayusha/work/opensbi/lib/utils/libfdt/libfdt_env.h \
+ /home/ayusha/work/opensbi/include/sbi/sbi_string.h \
+ /home/ayusha/work/opensbi/include/sbi/sbi_types.h \
+ /home/ayusha/work/opensbi/lib/utils/libfdt/fdt.h \
+ /home/ayusha/work/opensbi/lib/utils/libfdt/libfdt.h \
+ /home/ayusha/work/opensbi/lib/utils/libfdt/libfdt_env.h \
+ /home/ayusha/work/opensbi/lib/utils/libfdt/libfdt_internal.h

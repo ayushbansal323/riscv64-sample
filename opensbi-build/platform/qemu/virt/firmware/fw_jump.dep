@@ -1,0 +1,8 @@
+/home/ayusha/work/opensbi/build/platform/qemu/virt/firmware/fw_jump.o: /home/ayusha/work/opensbi/firmware/fw_jump.S \
+ /home/ayusha/work/opensbi/firmware/fw_base.S \
+ /home/ayusha/work/opensbi/include/sbi/riscv_asm.h \
+ /home/ayusha/work/opensbi/include/sbi/riscv_encoding.h \
+ /home/ayusha/work/opensbi/include/sbi/sbi_const.h \
+ /home/ayusha/work/opensbi/include/sbi/sbi_platform.h \
+ /home/ayusha/work/opensbi/include/sbi/sbi_scratch.h \
+ /home/ayusha/work/opensbi/include/sbi/sbi_trap.h

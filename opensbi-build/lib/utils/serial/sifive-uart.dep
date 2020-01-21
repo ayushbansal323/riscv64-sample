@@ -1,0 +1,6 @@
+/home/ayusha/work/opensbi/build/lib/utils/serial/sifive-uart.o: /home/ayusha/work/opensbi/lib/utils/serial/sifive-uart.c \
+ /home/ayusha/work/opensbi/include/sbi/riscv_io.h \
+ /home/ayusha/work/opensbi/include/sbi/riscv_barrier.h \
+ /home/ayusha/work/opensbi/include/sbi/sbi_types.h \
+ /home/ayusha/work/opensbi/include/sbi/sbi_console.h \
+ /home/ayusha/work/opensbi/include/sbi_utils/serial/sifive-uart.h
