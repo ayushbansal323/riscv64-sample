@@ -85,3 +85,25 @@ opensbi
 -bios $WORK/opensbi/build/platform/qemu/virt/firmware/fw_jump.elf \\ \
 -kernel $WORK/linux/arch/riscv/boot/Image \\ \
 -initrd $WORK/freedom-u-sdk/work/initramfs.cpio.gz
+
+
+### modify initramfs.cpio.gz
+
+extract initramfs.cpio.gz
+
+> gzip -d initramfs.cpio.gz \
+> cpio -idmv --no-absolute-filenames < initramfs.cpio.gz
+
+insert your code in rootfs
+after inserting your code create modified.initramfs.cpio.gz
+
+> sh -c ' find . | cpio -H newc -o' | gzip -9 > new_initramfs.cpio.gz
+
+OR
+
+> find ./ -depth -print | cpio -oaV | gzip -c > archive.cpio.gz
+
+
+### for cross compiling of linux kernal module refer
+
+https://blukat29.github.io/2017/12/cross-compile-arm-kernel-module/
