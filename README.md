@@ -96,9 +96,10 @@ extract initramfs.cpio.gz
 
 OR
 
-> gzip -d initramfs.cpio.gz
+> gzip -d initramfs.cpio.gz \
 > cpio -idm < initramfs.cpio
-insert your code in rootfs
+
+Insert your code in rootfs
 after inserting your code create modified.initramfs.cpio.gz
 
 > sh -c ' find . | cpio -H newc -o' | gzip -9 > new_initramfs.cpio.gz
