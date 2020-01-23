@@ -94,6 +94,10 @@ extract initramfs.cpio.gz
 > gzip -d initramfs.cpio.gz \
 > cpio -idmv --no-absolute-filenames < initramfs.cpio.gz
 
+OR
+
+> gzip -d initramfs.cpio.gz
+> cpio -idm < initramfs.cpio
 insert your code in rootfs
 after inserting your code create modified.initramfs.cpio.gz
 
@@ -101,7 +105,7 @@ after inserting your code create modified.initramfs.cpio.gz
 
 OR
 
-> find ./ -depth -print | cpio -oaV | gzip -c > archive.cpio.gz
+> find . -print |cpio -H newc -o |gzip -9 > ../ramdisk.cpio.gz
 
 
 ### for cross compiling of linux kernal module refer
