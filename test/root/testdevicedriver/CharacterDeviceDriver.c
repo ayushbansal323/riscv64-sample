@@ -3,9 +3,9 @@
 #include <linux/device.h>
 #include <linux/kernel.h>
 #include <linux/fs.h>
-#include <asm/uaccess.h>
+#include <linux/uaccess.h>
 
-#define DEVICE_NAME "Driver 1"
+#define DEVICE_NAME "Driver1"
 #define CLASS_NAME "Driver"
 
 MODULE_LICENSE("GPL");
@@ -46,7 +46,7 @@ static int __init char_init(void)
 	    return majorNumber;
 	}
 
-	printk(KERN_INFO"Regestered correctly with major number");
+	printk(KERN_INFO"Regestered correctly with major number %d",majorNumber);
 	charClass = class_create(THIS_MODULE , CLASS_NAME);
 
 	if (IS_ERR(charClass))
@@ -105,7 +105,8 @@ static ssize_t dev_read(struct file *filep,char *buffer,size_t len,loff_t *offse
 
 static ssize_t dev_write(struct file *filep,const char *buffer,size_t len,loff_t *offset)
 {
-	sprintf(message,"%s(%d letters)",buffer,len);
+	//sprintf(message,"%s(%d letters)",buffer,len);
+	copy_from_user(message,buffer,len);
 	size_of_message = strlen(message);
 	printk(KERN_INFO"Received %d characters from user \n",len);
 	return len;

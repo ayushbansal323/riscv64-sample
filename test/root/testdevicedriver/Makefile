@@ -1,4 +1,7 @@
+PWD := $(shell pwd)
 obj-m += CharacterDeviceDriver.o
 
 all:
-	make -C /lib/modules/$(shell uname -r)/build M=$(PWD) modules
+	make ARCH=riscv CROSS_COMPILE=$(CROSS) M=$(PWD) -C $(KERNEL) SUBDIRS=$(PWD) modules
+clean:
+	make -C $(KERNEL) SUBDIRS=$(PWD) clean
