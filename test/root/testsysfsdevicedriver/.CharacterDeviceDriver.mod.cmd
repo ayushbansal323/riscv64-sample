@@ -1,0 +1,1 @@
+cmd_/home/ayusha/driverriscv/test/root/testsysfsdevicedriver/CharacterDeviceDriver.mod := { echo  /home/ayusha/driverriscv/test/root/testsysfsdevicedriver/CharacterDeviceDriver.o; echo; } > /home/ayusha/driverriscv/test/root/testsysfsdevicedriver/CharacterDeviceDriver.mod
