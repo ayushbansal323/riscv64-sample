@@ -86,8 +86,36 @@ opensbi
 -kernel $WORK/linux/arch/riscv/boot/Image \\ \
 -initrd $WORK/freedom-u-sdk/work/initramfs.cpio.gz
 
+### RUN Qemu and access it through ssh and scp
 
-### modify initramfs.cpio.gz
+#### run qemu on server
+
+> qemu-system-riscv64 -nographic -M virt -m 256M \\ \
+-bios $PWD/opensbi-build/platform/qemu/virt/firmware/fw_jump.elf \\ \
+-kernel $PWD/Image \\ \
+-netdev user,id=eno4,hostfwd=tcp::32222-$GUEST_IP:22,hostfwd=tcp::22323-$GUEST_IP:23,hostfwd=tcp::26868-$GUEST_IP:68,hostfwd=tcp::28088-$GUEST_IP:80 \\ \
+-device virtio-net-device,netdev=eno4 \\ \
+-initrd $PWD/ramdisk.cpio.gz
+
+The -netdev options enables the network for qemu, for ssh we have forwarded host port number 32222 "hostfwd=tcp::32222-$GUEST_IP:22"
+
+username: root
+password: sifive
+#### access qemu through ssh 
+
+> ssh root@172.16.35.108 -p 32222
+
+password: sifive
+
+#### use scp to copy from your computer to a (remote) qemu server
+
+> scp -P 32222 test.txt  root@172.16.35.108:/root
+
+password: sifive
+
+this command will copy file test.txt from local computer to remote qemu virtual machine
+
+### modify initramfs.cpio.gz (rootfs)
 
 extract initramfs.cpio.gz
 
