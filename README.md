@@ -95,7 +95,7 @@ opensbi
 -kernel $PWD/Image \\ \
 -netdev user,id=eno4,hostfwd=tcp::32222-$GUEST_IP:22,hostfwd=tcp::22323-$GUEST_IP:23,hostfwd=tcp::26868-$GUEST_IP:68,hostfwd=tcp::28088-$GUEST_IP:80 \\ \
 -device virtio-net-device,netdev=eno4 \\ \
--initrd $PWD/ramdisk.cpio.gz
+-initrd $PWD/initramfs.cpio.gz
 
 The -netdev options enables the network for qemu, for ssh we have forwarded host port number 32222 "hostfwd=tcp::32222-$GUEST_IP:22"
 
@@ -128,7 +128,7 @@ OR
 > cpio -idm < initramfs.cpio
 
 Insert your code in rootfs
-after inserting your code create modified.initramfs.cpio.gz
+after inserting your code create modified initramfs.cpio.gz named ramdisk.cpio.gz or  new_initramfs.cpio.gz
 
 > sh -c ' find . | cpio -H newc -o' | gzip -9 > new_initramfs.cpio.gz
 
@@ -136,6 +136,7 @@ OR
 
 > find . -print |cpio -H newc -o |gzip -9 > ../ramdisk.cpio.gz
 
+while running qemu use ramdisk.cpio.gz or new_initramfs.cpio.gz instead of initramfs.cpio.gz
 
 ### for cross compiling of linux kernal module refer
 
