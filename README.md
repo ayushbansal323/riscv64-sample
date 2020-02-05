@@ -146,7 +146,7 @@ https://blukat29.github.io/2017/12/cross-compile-arm-kernel-module/
 
 write the following in makefile
 
-'''
+```
  PWD := $(shell pwd)\
  obj-m += CharacterDeviceDriver.o\
  \
@@ -154,7 +154,7 @@ write the following in makefile
         make ARCH=riscv CROSS_COMPILE=$(CROSS) M=$(PWD) -C $(KERNEL) SUBDIRS=$(PWD) modules\
 clean: \
         make -C $(KERNEL) SUBDIRS=$(PWD) clean
-'''
+```
 
 #### cross compile kernel module using following command
 
