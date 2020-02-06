@@ -7,7 +7,10 @@ build opensbi + qemu + linux for riscv
 
 software package
 
-> sudo apt-get install git libglib2.0-dev libfdt-dev libpixman-1-dev zlib1g-dev
+> sudo apt-get install git libglib2.0-dev libfdt-dev libpixman-1-dev zlib1g-dev \
+> autoconf automake autotools-dev curl libmpc-dev libmpfr-dev libgmp-dev \
+> gawk build-essential bison flex texinfo gperf libtool patchutils bc \
+> zlib1g-dev libexpat-dev git
 
 assuming the $WORK as the working directory
 
