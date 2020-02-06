@@ -53,6 +53,10 @@ riscv-toolchain
 
 > ./configure --prefix=$WORK
 
+> make newlib -j $(nproc)
+
+> make linux -j $(nproc)
+
 > export PATH="$PWD/../bin:$PATH" 
 
 
