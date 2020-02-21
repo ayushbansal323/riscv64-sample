@@ -7,7 +7,10 @@ build opensbi + qemu + linux for riscv
 
 software package
 
-> sudo apt-get install git libglib2.0-dev libfdt-dev libpixman-1-dev zlib1g-dev
+> sudo apt-get install git libglib2.0-dev libfdt-dev libpixman-1-dev zlib1g-dev \
+> autoconf automake autotools-dev curl libmpc-dev libmpfr-dev libgmp-dev \
+> gawk build-essential bison flex texinfo gperf libtool patchutils bc \
+> zlib1g-dev libexpat-dev git
 
 assuming the $WORK as the working directory
 
@@ -53,6 +56,10 @@ riscv-toolchain
 
 > ./configure --prefix=$WORK
 
+> make newlib -j $(nproc)
+
+> make linux -j $(nproc)
+
 > export PATH="$PWD/../bin:$PATH" 
 
 
@@ -86,8 +93,36 @@ opensbi
 -kernel $WORK/linux/arch/riscv/boot/Image \\ \
 -initrd $WORK/freedom-u-sdk/work/initramfs.cpio.gz
 
+### RUN Qemu and access it through ssh and scp
 
-### modify initramfs.cpio.gz
+#### run qemu on server
+
+> qemu-system-riscv64 -nographic -M virt -m 256M \\ \
+-bios $PWD/opensbi-build/platform/qemu/virt/firmware/fw_jump.elf \\ \
+-kernel $PWD/Image \\ \
+-netdev user,id=eno4,hostfwd=tcp::32222-$GUEST_IP:22,hostfwd=tcp::22323-$GUEST_IP:23,hostfwd=tcp::26868-$GUEST_IP:68,hostfwd=tcp::28088-$GUEST_IP:80 \\ \
+-device virtio-net-device,netdev=eno4 \\ \
+-initrd $PWD/initramfs.cpio.gz
+
+The -netdev options enables the network for qemu, for ssh we have forwarded host port number 32222 "hostfwd=tcp::32222-$GUEST_IP:22"
+
+username: root
+password: sifive
+#### access qemu through ssh 
+
+> ssh root@172.16.35.108 -p 32222
+
+password: sifive
+
+#### use scp to copy from your computer to a (remote) qemu server
+
+> scp -P 32222 test.txt  root@172.16.35.108:/root
+
+password: sifive
+
+this command will copy file test.txt from local computer to remote qemu virtual machine
+
+### modify initramfs.cpio.gz (rootfs)
 
 extract initramfs.cpio.gz
 
@@ -100,7 +135,7 @@ OR
 > cpio -idm < initramfs.cpio
 
 Insert your code in rootfs
-after inserting your code create modified.initramfs.cpio.gz
+after inserting your code create modified initramfs.cpio.gz named ramdisk.cpio.gz or  new_initramfs.cpio.gz
 
 > sh -c ' find . | cpio -H newc -o' | gzip -9 > new_initramfs.cpio.gz
 
@@ -108,7 +143,30 @@ OR
 
 > find . -print |cpio -H newc -o |gzip -9 > ../ramdisk.cpio.gz
 
+while running qemu use ramdisk.cpio.gz or new_initramfs.cpio.gz instead of initramfs.cpio.gz
 
 ### for cross compiling of linux kernal module refer
 
 https://blukat29.github.io/2017/12/cross-compile-arm-kernel-module/
+
+#### create Makefile to cross compile kernel module
+
+write the following in makefile
+
+```
+ PWD := $(shell pwd)
+ obj-m += CharacterDeviceDriver.o
+ 
+ all: 
+        make ARCH=riscv CROSS_COMPILE=$(CROSS) M=$(PWD) -C $(KERNEL) SUBDIRS=$(PWD) modules
+clean: 
+        make -C $(KERNEL) SUBDIRS=$(PWD) clean
+```
+
+#### cross compile kernel module using following command
+
+> export PATH="$PWD/../../../../work/bin:$PATH"
+
+export the path where your risv-gnu-toolchain is installed 
+
+> make KERNEL=../../../../work/linux/ CROSS=riscv64-unknown-linux-gnu-
